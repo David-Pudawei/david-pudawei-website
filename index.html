@@ -508,12 +508,31 @@
             padding: 40px 32px;
             transition: all 0.3s;
             border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
             border-color: rgba(167,131,75,0.2);
+        }
+
+        .service-card::after {
+            content: '→';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: var(--gold);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+            transform: translateX(5px);
         }
 
         .service-icon {
@@ -564,6 +583,104 @@
             height: 6px;
             background: var(--gold);
             border-radius: 50%;
+        }
+
+        /* Service Detail Section */
+        .service-detail {
+            padding: 120px 0;
+            background: var(--light-bg);
+            display: none;
+        }
+
+        .service-detail.active {
+            display: block;
+        }
+
+        .detail-header {
+            margin-bottom: 40px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .detail-content {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-icon.large {
+            width: 80px;
+            height: 80px;
+            font-size: 36px;
+        }
+
+        .detail-section {
+            margin-top: 50px;
+        }
+
+        .detail-section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--gold);
+        }
+
+        .detail-num {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 10px;
+        }
+
+        .detail-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .detail-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
         }
 
         /* Team Section */
@@ -1110,106 +1227,388 @@
                 <p class="section-desc">从项目策划到运营顾问，我们提供全流程专业服务</p>
             </div>
             <div class="services-grid">
-                <!-- 项目管理咨询 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('pm-consult')">
                     <div class="service-icon">📋</div>
                     <h3>项目管理咨询</h3>
-                    <p>项目开发全过程项目管理服务，包括管理规划、资源规划、节点规划，解决开发中的各方面管理问题</p>
-                    <ul class="service-list">
-                        <li>商业开发节点规划</li>
-                        <li>资源配置规划</li>
-                        <li>成本及合约规划</li>
-                        <li>招标辅助管理</li>
-                        <li>改造项目管理规划</li>
-                        <li>辅助设计管理</li>
-                        <li>开业管理策划</li>
-                    </ul>
+                    <p>项目开发全过程项目管理服务，包括管理规划、资源规划、节点规划</p>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 设计技术咨询 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('design-consult')">
                     <div class="service-icon">🏗️</div>
                     <h3>设计技术咨询</h3>
-                    <p>商业设计标准拟定、设计评审、设计技术指导、设计任务书编制、辅助设计</p>
-                    <ul class="service-list">
-                        <li>前期规划设计</li>
-                        <li>设计任务书编制</li>
-                        <li>商业设计标准拟定</li>
-                        <li>设计技术指导</li>
-                        <li>设计成果评审</li>
-                        <li>商业辅助设计</li>
-                        <li>改造项目技术评估</li>
-                        <li>消防专项评估</li>
-                    </ul>
+                    <p>商业设计标准拟定、设计评审、设计技术指导、设计任务书编制</p>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 商业策划 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('business-plan')">
                     <div class="service-icon">💼</div>
                     <h3>商业策划</h3>
                     <p>商业定位、市场调研、业态规划、招商策划等全方位商业策划服务</p>
-                    <ul class="service-list">
-                        <li>市场调研 - 深入分析区域市场，为决策提供数据支撑</li>
-                        <li>商业定位 - 精准市场定位，打造差异化竞争优势</li>
-                        <li>业态规划 - 科学规划商业业态组合，提升商业整体价值</li>
-                        <li>财务分析 - 科学投资回报分析，确保项目可行性</li>
-                    </ul>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 商业改造专项咨询 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('rebuild-consult')">
                     <div class="service-icon">🔧</div>
                     <h3>商业改造专项咨询</h3>
                     <p>改造项目前期工程评估，技术分析，提供全方位改造咨询</p>
-                    <ul class="service-list">
-                        <li>建筑现状评估 - 评估建筑现状与消防规范差异，预判改造内容</li>
-                        <li>机电现状评估 - 评估机电系统状况，给出改造指引</li>
-                        <li>弱电信息化系统现状评估 - 评估信息系统状况</li>
-                        <li>建筑改造方案可行性评估 - 评估方案与消防规范吻合度</li>
-                        <li>机电改造方案评估 - 评估方案与运营需求吻合度</li>
-                        <li>弱电信息化改造方案评估 - 评估信息化改造方案</li>
-                    </ul>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 商业信息化 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('it-consult')">
                     <div class="service-icon">💻</div>
                     <h3>商业信息化</h3>
                     <p>商业信息化规划、IT系统选型、系统实施顾问、商业智能化</p>
-                    <ul class="service-list">
-                        <li>信息化设计及建设标准制定</li>
-                        <li>信息化系统集成技术解决方案</li>
-                        <li>信息化设计指导</li>
-                        <li>ERP系统 - 整合财务、人力、供应链等核心业务流程</li>
-                        <li>CRM/会员系统 - 提升客户粘性与复购率</li>
-                        <li>POS系统 - 实现线上线下一体化销售管理</li>
-                        <li>停车/PMS系统 - 智能停车管理与物业管理</li>
-                        <li>基础网络 - 打造安全高效网络空间</li>
-                        <li>客流、信发导视 - 全方位搭建数据信息及宣传途径</li>
-                        <li>信息化集成项目管理</li>
-                        <li>运营期IT代维 - 保证系统稳定运行</li>
-                    </ul>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 物业咨询 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('property-consult')">
                     <div class="service-icon">🏢</div>
                     <h3>物业咨询</h3>
                     <p>物业规划、设施管理咨询、能源管理咨询等专业服务</p>
-                    <ul class="service-list">
-                        <li>物业设计及建设标准制定</li>
-                        <li>物业功能及设施规划 - 完成物业功能区域、点位布局规划方案</li>
-                        <li>物业体系搭建 - 组织架构规划、管理制度拟定、人员培训</li>
-                        <li>物业管理 - 组建物业公司，进行运营期物业管理</li>
-                    </ul>
+                    <div class="service-arrow">→</div>
                 </div>
-                <!-- 项目管理 -->
-                <div class="service-card">
+                <div class="service-card" onclick="showServiceDetail('project-mgmt')">
                     <div class="service-icon">🎯</div>
                     <h3>项目管理</h3>
                     <p>代表业主进行项目全过程管理，实现项目价值最大化</p>
-                    <ul class="service-list">
-                        <li>项目全过程管理</li>
-                        <li>项目价值最大化</li>
-                        <li>业主利益代表</li>
-                        <li>项目进度管控</li>
-                        <li>质量与成本管理</li>
-                    </ul>
+                    <div class="service-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Section -->
+    <section class="service-detail" id="service-detail">
+        <div class="section-container">
+            <div class="detail-header">
+                <button class="back-btn" onclick="hideServiceDetail()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    返回服务领域
+                </button>
+            </div>
+            
+            <!-- 项目管理咨询详情 -->
+            <div class="detail-content" id="detail-pm-consult" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">📋</div>
+                    <h2 class="section-title">项目管理咨询</h2>
+                    <p class="section-desc">项目开发全过程项目管理服务，包括管理规划、资源规划、节点规划，解决开发中的各方面管理问题</p>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-num">01</div>
+                        <h4>商业开发节点规划</h4>
+                        <p>科学制定项目开发关键节点，确保项目按期推进</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">02</div>
+                        <h4>资源配置规划</h4>
+                        <p>合理配置人力、物力、财力资源，优化项目投入产出</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">03</div>
+                        <h4>成本及合约规划</h4>
+                        <p>精细化成本管控，规范合约管理，控制项目风险</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">04</div>
+                        <h4>招标辅助管理</h4>
+                        <p>协助招标流程管理，确保招标合规高效</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">05</div>
+                        <h4>改造项目管理规划</h4>
+                        <p>针对改造项目特点，制定专项管理方案</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">06</div>
+                        <h4>辅助设计管理</h4>
+                        <p>协调设计进度，把控设计质量</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">07</div>
+                        <h4>开业管理策划</h4>
+                        <p>统筹开业筹备工作，确保顺利开业运营</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 设计技术咨询详情 -->
+            <div class="detail-content" id="detail-design-consult" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">🏗️</div>
+                    <h2 class="section-title">设计技术咨询</h2>
+                    <p class="section-desc">商业设计标准拟定、设计评审、设计技术指导、设计任务书编制、辅助设计</p>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-num">01</div>
+                        <h4>前期规划设计</h4>
+                        <p>参与项目前期规划，提供专业技术建议</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">02</div>
+                        <h4>设计任务书编制</h4>
+                        <p>编制详细设计任务书，明确设计要求和标准</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">03</div>
+                        <h4>商业设计标准拟定</h4>
+                        <p>制定商业空间设计标准，确保设计品质</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">04</div>
+                        <h4>设计技术指导</h4>
+                        <p>全程技术指导，解决设计中的技术难题</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">05</div>
+                        <h4>设计成果评审</h4>
+                        <p>组织设计成果评审，把控设计质量</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">06</div>
+                        <h4>商业辅助设计</h4>
+                        <p>协助商业功能布局设计，优化商业动线</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">07</div>
+                        <h4>改造项目技术评估</h4>
+                        <p>评估改造技术可行性，提供技术方案</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">08</div>
+                        <h4>消防专项评估</h4>
+                        <p>消防设计评估，确保符合消防规范</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商业策划详情 -->
+            <div class="detail-content" id="detail-business-plan" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">💼</div>
+                    <h2 class="section-title">商业策划</h2>
+                    <p class="section-desc">商业定位、市场调研、业态规划、招商策划等全方位商业策划服务</p>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-num">01</div>
+                        <h4>市场调研</h4>
+                        <p>深入分析区域市场，为决策提供数据支撑</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">02</div>
+                        <h4>商业定位</h4>
+                        <p>精准市场定位，打造差异化竞争优势</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">03</div>
+                        <h4>业态规划</h4>
+                        <p>科学规划商业业态组合，提升商业整体价值</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">04</div>
+                        <h4>财务分析</h4>
+                        <p>科学投资回报分析，确保项目可行性</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商业改造专项咨询详情 -->
+            <div class="detail-content" id="detail-rebuild-consult" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">🔧</div>
+                    <h2 class="section-title">商业改造专项咨询</h2>
+                    <p class="section-desc">改造项目前期工程评估，技术分析，提供全方位改造咨询</p>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">改造前期评估</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>建筑现状评估</h4>
+                            <p>评估建筑现状与消防规范差异，预判改造内容，给出改造指引</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>机电现状评估</h4>
+                            <p>评估项目机电系统状况，预判改造内容，给出改造指引</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">03</div>
+                            <h4>弱电信息化系统现状评估</h4>
+                            <p>评估项目各个信息系统状况，给出改造建议</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">改造方案评估</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>建筑改造方案可行性评估</h4>
+                            <p>评估建筑方案与现行消防规范吻合度，给出评估及指引</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>机电改造方案评估</h4>
+                            <p>评估机电改造方案与运营需求吻合度，给出评估及指引</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">03</div>
+                            <h4>弱电信息化改造方案评估</h4>
+                            <p>评估信息化改造方案可行性，给出优化建议</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商业信息化详情 -->
+            <div class="detail-content" id="detail-it-consult" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">💻</div>
+                    <h2 class="section-title">商业信息化</h2>
+                    <p class="section-desc">商业信息化规划、IT系统选型、系统实施顾问、商业智能化</p>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">信息化规划及技术服务</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>信息化设计及建设标准制定</h4>
+                            <p>根据项目特性拟定设计标准，建设规范</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>信息化系统集成技术解决方案</h4>
+                            <p>信息化方案设计，搭建基础框架逻辑</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">03</div>
+                            <h4>信息化设计指导</h4>
+                            <p>指导设计院进行信息化施工图设计，审图及设计优化</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">核心系统</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>ERP系统</h4>
+                            <p>企业资源计划系统，整合财务、人力、供应链等核心业务流程</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>CRM/会员系统</h4>
+                            <p>客户关系管理与会员运营系统，提升客户粘性与复购率</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">03</div>
+                            <h4>POS系统</h4>
+                            <p>销售终端系统，实现线上线下一体化销售管理</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">04</div>
+                            <h4>停车/PMS系统</h4>
+                            <p>智能停车管理与物业管理系统，降低运营成本</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">05</div>
+                            <h4>基础网络</h4>
+                            <p>最全面的网络架构，为功能模块打造安全高效网络空间</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">06</div>
+                            <h4>客流、信发导视</h4>
+                            <p>客流系统及信息发布的全方位搭建，为运营提供最有效的数据信息及宣传途径</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">项目管理与运维</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>信息化集成项目管理</h4>
+                            <p>整体提供信息化系统建设全过程管理工作</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>运营期IT代维</h4>
+                            <p>负责IT系统整体维护，保证系统稳定运行</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 物业咨询详情 -->
+            <div class="detail-content" id="detail-property-consult" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">🏢</div>
+                    <h2 class="section-title">物业咨询</h2>
+                    <p class="section-desc">物业规划、设施管理咨询、能源管理咨询等专业服务</p>
+                </div>
+                <div class="detail-section">
+                    <h3 class="detail-section-title">建设期商业咨询服务</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-num">01</div>
+                            <h4>物业设计及建设标准制定</h4>
+                            <p>根据项目特性拟定设计标准，建设规范</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">02</div>
+                            <h4>物业功能及设施规划</h4>
+                            <p>完成物业功能区域、点位布局规划方案</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">03</div>
+                            <h4>物业体系搭建</h4>
+                            <p>物业组织架构规划，管理制度拟定，人员培训</p>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-num">04</div>
+                            <h4>物业管理</h4>
+                            <p>组建物业公司，进行运营期物业管理</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 项目管理详情 -->
+            <div class="detail-content" id="detail-project-mgmt" style="display:none">
+                <div class="section-header">
+                    <div class="service-icon large">🎯</div>
+                    <h2 class="section-title">项目管理</h2>
+                    <p class="section-desc">代表业主进行项目全过程管理，实现项目价值最大化</p>
+                </div>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-num">01</div>
+                        <h4>项目全过程管理</h4>
+                        <p>从项目启动到交付运营，全程专业管理</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">02</div>
+                        <h4>项目价值最大化</h4>
+                        <p>优化资源配置，提升项目整体价值</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">03</div>
+                        <h4>业主利益代表</h4>
+                        <p>代表业主利益，协调各方关系</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">04</div>
+                        <h4>项目进度管控</h4>
+                        <p>科学制定进度计划，确保按期交付</p>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-num">05</div>
+                        <h4>质量与成本管理</h4>
+                        <p>严格质量管控，精细化成本管理</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1505,6 +1904,42 @@
                 }
             });
         });
+
+        // Service detail show/hide
+        function showServiceDetail(serviceId) {
+            const servicesSection = document.getElementById('services');
+            const detailSection = document.getElementById('service-detail');
+            
+            // Hide all detail contents
+            document.querySelectorAll('.detail-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected detail
+            const selectedDetail = document.getElementById('detail-' + serviceId);
+            if (selectedDetail) {
+                selectedDetail.style.display = 'block';
+            }
+            
+            // Hide services section, show detail section
+            servicesSection.style.display = 'none';
+            detailSection.classList.add('active');
+            
+            // Scroll to detail section
+            detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function hideServiceDetail() {
+            const servicesSection = document.getElementById('services');
+            const detailSection = document.getElementById('service-detail');
+            
+            // Hide detail section, show services section
+            detailSection.classList.remove('active');
+            servicesSection.style.display = 'block';
+            
+            // Scroll to services section
+            servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
         // Mobile menu toggle
         function toggleMobileMenu() {
