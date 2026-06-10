@@ -883,7 +883,7 @@
 
         .partners-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
             align-items: start;
         }
@@ -938,42 +938,33 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        .partners-logo-wall h3 {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 24px;
-            color: var(--dark);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--gold);
-        }
-
         .logo-wall-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
 
         .logo-wall-item {
             aspect-ratio: 3/2;
             background: var(--light-bg);
-            border-radius: 12px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 12px;
             transition: all 0.3s;
             border: 1px solid transparent;
         }
 
         .logo-wall-item:hover {
             border-color: rgba(167,131,75,0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .logo-wall-item img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
             filter: grayscale(100%);
             opacity: 0.7;
@@ -1282,7 +1273,7 @@
             }
 
             .logo-wall-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -2029,11 +2020,7 @@
                     <div class="partner-list-item">伍兹贝格建筑设计咨询有限公司</div>
                 </div>
                 <div class="partners-logo-wall">
-                    <h3>LOGO展示</h3>
                     <div class="logo-wall-grid">
-                        <div class="logo-wall-item">
-                            <img src="partner-logos/partner_logo_1.jpg" alt="万商俱乐部">
-                        </div>
                         <div class="logo-wall-item">
                             <img src="partner-logos/partner_logo_2.jpg" alt="天津消防研究所">
                         </div>
@@ -2063,21 +2050,6 @@
                         </div>
                         <div class="logo-wall-item">
                             <img src="partner-logos/partner_logo_11.png" alt="北京心品建设管理">
-                        </div>
-                        <div class="logo-wall-item">
-                            <div style="font-size: 12px; color: var(--gray); text-align: center;">中商数据</div>
-                        </div>
-                        <div class="logo-wall-item">
-                            <div style="font-size: 12px; color: var(--gray); text-align: center;">清华同衡</div>
-                        </div>
-                        <div class="logo-wall-item">
-                            <div style="font-size: 12px; color: var(--gray); text-align: center;">台北太威</div>
-                        </div>
-                        <div class="logo-wall-item">
-                            <div style="font-size: 12px; color: var(--gray); text-align: center;">伍兹贝格</div>
-                        </div>
-                        <div class="logo-wall-item">
-                            <div style="font-size: 12px; color: var(--gray); text-align: center;">商业不动产<br>专业委员会</div>
                         </div>
                     </div>
                 </div>
