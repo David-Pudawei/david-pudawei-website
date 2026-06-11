@@ -815,6 +815,15 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
+        .member-silhouette {
+            width: 66.67%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            transition: all 0.3s;
+            margin: 0 auto;
+            display: block;
+        }
+
         .member-photo {
             width: 66.67%;
             aspect-ratio: 1;
@@ -824,6 +833,7 @@
             display: block;
         }
 
+        .team-member-card:hover .member-silhouette,
         .team-member-card:hover .member-photo {
             transform: scale(1.05);
         }
